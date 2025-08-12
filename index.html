@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Payment Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            border: 1px solid rgb(231, 159, 34);
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .main_heading {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="password"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        fieldset {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        fieldset legend {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .row > div {
+            flex: 1;
+            min-width: 48%;
+        }
+        .row > div.full {
+            flex: 1 1 100%;
+        }
+        textarea {
+            resize: none;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .row > div {
+                min-width: 100%;
+            }
+            input[type="submit"] {
+                font-size: 16px;
+                padding: 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+            .main_heading {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action="/submit_payment" method="POST">
+        <h1 class="main_heading">Payment Form</h1>
+        <p>Required fields are marked with *</p>
+
+        <!-- Personal Details -->
+        <fieldset>
+            <legend>Personal Details</legend>
+            <div class="row">
+                <div>
+                    <label for="Name">Name: *</label>
+                    <input type="text" id="Name" name="Name" placeholder="Swati" required>
+                </div>
+                <div>
+                    <label for="Surname">Surname: *</label>
+                    <input type="text" id="Surname" name="Surname" placeholder="Patel" required>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label for="MobileNo">Mobile No.: *</label>
+                    <input type="tel" id="MobileNo" name="MobileNo" required>
+                </div>
+                <div>
+                    <label for="Email">Email: *</label>
+                    <input type="email" id="Email" name="Email" required>
+                </div>
+            </div>
+            <fieldset>
+                <legend>Gender *</legend>
+                <label><input type="radio" name="Gender" value="Female" required> Female</label>
+                <label><input type="radio" name="Gender" value="Male" required> Male</label>
+                <label><input type="radio" name="Gender" value="Other" required> Other</label>
+            </fieldset>
+            <label for="Address">Address:</label>
+            <textarea id="Address" name="Address" rows="4"></textarea>
+            <label for="Pincode">Pincode:</label>
+            <input type="number" id="Pincode" name="Pincode">
+        </fieldset>
+
+        <!-- Education Information -->
+        <fieldset>
+            <legend>Education Information</legend>
+            <label for="Exam">Exam: *</label>
+            <select id="Exam" name="Exam" required>
+                <option value=""></option>
+                <option value="MP Board">MP Board</option>
+                <option value="CBSE Board">CBSE Board</option>
+            </select>
+            <label for="TenthMarksheet">10<sup>th</sup> MarkSheet:</label>
+            <input type="file" id="TenthMarksheet" name="TenthMarksheet">
+            <label for="CollegeName">College Name: *</label>
+            <input type="text" id="CollegeName" name="CollegeName" required>
+        </fieldset>
+
+        <!-- Payment Information -->
+        <fieldset>
+            <legend>Payment Information</legend>
+            <label for="CardType">Card Type: *</label>
+            <select id="CardType" name="CardType" required>
+                <option value=""></option>
+                <option value="VISA">VISA</option>
+                <option value="RUPAY">RUPAY</option>
+                <option value="MASTER CARD">MASTER CARD</option>
+            </select>
+            <label for="CardNumber">Card Number: *</label>
+            <input type="number" id="CardNumber" name="CardNumber" required pattern="\d{16}" title="Enter a 16-digit card number">
+            <label for="ExpDate">Expiration Date: *</label>
+            <input type="date" id="ExpDate" name="ExpDate" required>
+            <label for="CVV">CVV: *</label>
+            <input type="password" id="CVV" name="CVV" required pattern="\d{3}" title="Enter a 3-digit CVV">
+        </fieldset>
+
+        <input type="submit" value="Pay Now">
+    </form>
+</div>
+</body>
+</html>
