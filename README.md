@@ -19,7 +19,7 @@ https://swatipatelhtml.netlify.app
 - Clean UI and accessible form fields
 
 ## Screenshots
-![Payment Form Screenshot](payment.png)
+![Payment Form Screenshot](paymentform.png)
 
 ## How to run locally
 ```bash
